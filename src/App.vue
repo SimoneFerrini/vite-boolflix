@@ -3,6 +3,8 @@
 <script>
 import {store} from "./store";
 import axios from "axios";
+import AppHeader from "./components/AppHeader.vue";
+import AppMain from "./components/AppMain.vue";
 
 export default{
   data(){
@@ -12,11 +14,27 @@ export default{
     }
   },
 
-  created(){
-    axios.get(this.store.APItest).then((res) => {
-      console.log(res);
-    });
+  components:{
+    AppHeader,
+    AppMain,
   },
+
+  methods:{
+    searchMovie(){
+      let newAPI = this.store.APIqueryTitle + this.store.searchTitle;
+      axios.get(newAPI).then((res)=>{
+        
+        this.store.moviesList = res.data.results;
+        console.log(this.store.moviesList);
+      })
+    }
+  }
+
+ // created(){
+ //   axios.get(this.store.APIqueryTitle).then((res) => {
+ //     console.log(res);
+ //   });
+ // },
 
 
 
@@ -25,6 +43,7 @@ export default{
 </script>
 
 <template>
+    <AppHeader @search="searchMovie()"></AppHeader>
 
 </template>
 
