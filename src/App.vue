@@ -13,8 +13,8 @@ export default{
   },
 
   created(){
-    axios.get().then((res) => {
-
+    axios.get(this.store.APItest).then((res) => {
+      console.log(res);
     });
   },
 
