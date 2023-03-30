@@ -29,12 +29,12 @@ export default{
       })
     }
   }
-
- // created(){
- //   axios.get(this.store.APIqueryTitle).then((res) => {
- //     console.log(res);
- //   });
- // },
+ 
+  // created(){
+  //   axios.get(this.store.APIqueryTitle).then((res) => {
+  //     console.log(res);
+  //   });
+  // },
 
 
 
