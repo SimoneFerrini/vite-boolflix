@@ -19,9 +19,9 @@ export default{
 <template>
     <div class="card">
         <span><strong> Title: </strong>{{ movie.title }}</span>
-        <span><strong> OriginalTitle: </strong>{{ movie.originalTitle }}</span>
-        <span><strong> Language: </strong>{{ movie.language }}</span>
-        <span><strong> Valutation :</strong>{{ movie.valutation }}</span>
+        <span><strong> OriginalTitle: </strong>{{ movie.original_title }}</span>
+        <span><strong> Language: </strong>{{ movie.original_language }}</span>
+        <span><strong> Users Vote :</strong>{{ movie.vote_average }}</span>
         
     </div>
 </template>

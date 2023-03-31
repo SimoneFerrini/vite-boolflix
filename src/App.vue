@@ -44,7 +44,7 @@ export default{
 
 <template>
     <AppHeader @search="searchMovie()"></AppHeader>
-
+    <AppMain></AppMain>
 </template>
 
 <style lang="scss" scoped>
