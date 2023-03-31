@@ -1,6 +1,7 @@
 <script>
 import {store} from "../store";
-import SingleCard from "./SingleCard.vue"
+import SingleCardMovie from "./SingleCardMovie.vue"
+import SingleCardSeries from "./SingleCardSeries.vue";
 
 export default{
     data(){
@@ -10,14 +11,25 @@ export default{
     },
 
     components:{
-        SingleCard,
+        SingleCardMovie,
+        SingleCardSeries,
     }
 }
 </script>
 
 <template>
-    <div class="cards-container">
-        <SingleCard v-for="movie in store.moviesList" :movie="movie"></SingleCard>
+    <div v-if="this.store.moviesList.length > 0">
+        <h2>Movies:</h2>
+        <div class="cards-container" >
+            <SingleCardMovie v-for="movie in store.moviesList" :movie="movie"></SingleCardMovie>
+        </div>
+    </div>
+
+    <div v-if="this.store.seriesList.length > 0">
+        <h2>Series:</h2>
+        <div class="cards-container">
+            <SingleCardSeries v-for="series in store.seriesList" :series="series"></SingleCardSeries>
+        </div>
     </div>
 
 </template>

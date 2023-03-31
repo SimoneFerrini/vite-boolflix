@@ -21,13 +21,20 @@ export default{
 
   methods:{
     searchMovie(){
-      let newAPI = this.store.APIqueryTitle + this.store.searchTitle;
-      axios.get(newAPI).then((res)=>{
+      let newAPImovie = this.store.APIbase + this.store.APImovieSearch + this.store.APIkey + this.store.APIquery + this.store.searchTitle;
+      axios.get(newAPImovie).then((res)=>{
         
         this.store.moviesList = res.data.results ;
-        console.log(this.store.moviesList);
+        
       })
+      let newAPIseries = this.store.APIbase + this.store.APIseriesSearch + this.store.APIkey + this.store.APIquery + this.store.searchTitle;
+      axios.get(newAPIseries).then((res)=>{
+        
+        this.store.seriesList = res.data.results;
+      })
+    
     }
+
   }
  
   // created(){
