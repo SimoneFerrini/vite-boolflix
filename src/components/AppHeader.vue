@@ -8,6 +8,8 @@ export default{
         store,
     }
   },
+  
+  emits: ['search'],
 
 }
 
@@ -21,11 +23,11 @@ export default{
       <div class="logo">
         <span class="b-logo">B</span><span>oolflix</span>
       </div>
-      <div>
+      <div class="input-and-btn">
         <div class="search-bar">
         <input v-model="store.searchTitle" @keyup.enter="$emit('search')" placeholder="Search..." type="text">
         <button @click="$emit('search')">Search</button>
-      </div>
+        </div>
       </div>
     </div>
   </div>
@@ -44,6 +46,13 @@ export default{
       justify-content: space-between;
       align-items: center;
       flex-shrink: 0;
+
+      .input-and-btn{
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        width: 50%;
+      }
     }
   }
   .logo{
@@ -81,8 +90,10 @@ export default{
     display: flex;
     flex-direction: row;
     gap: 40px;
+    width: 100%;
 
     input{
+      width: 70%;
       padding: 4px 2em;
     }
 

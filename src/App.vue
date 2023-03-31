@@ -24,7 +24,7 @@ export default{
       let newAPI = this.store.APIqueryTitle + this.store.searchTitle;
       axios.get(newAPI).then((res)=>{
         
-        this.store.moviesList = res.data.results;
+        this.store.moviesList = res.data.results ;
         console.log(this.store.moviesList);
       })
     }
