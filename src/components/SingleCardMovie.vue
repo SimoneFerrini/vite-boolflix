@@ -1,5 +1,5 @@
 <script>
-
+import "/node_modules/flag-icons/css/flag-icons.min.css";
 export default{
     data(){
         return{
@@ -12,6 +12,26 @@ export default{
 
         
     },
+
+    methods:{
+        languageToFlagMovie(xx){
+
+            if( xx == 'en'){
+                xx = 'gb';
+            } else if( xx == 'ja'){
+                xx = 'jp'
+            } else if( xx == 'zh'){
+                xx = 'cn'
+            } else if( xx == 'ko'){
+                xx = 'kr'
+            }
+
+            return xx;
+
+            
+
+        }
+    }
     
 }
 </script>
@@ -20,7 +40,7 @@ export default{
     <div class="card">
         <strong>{{ movie.title }}</strong>
         <span> ({{ movie.original_title }})</span>
-        <span>{{ movie.original_language }}</span>
+        <span :class=" `fi fi-${languageToFlagMovie(movie.original_language)} fis`"></span>
         <span>{{ movie.vote_average }}</span>
         
     </div>
