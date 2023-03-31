@@ -28,6 +28,8 @@ export default{
                 xx = 'kr'
             } else if( xx == 'xx'){
                 xx = '--'
+            } else if( xx == 'hi'){
+                xx = 'in'
             }
 
             return xx;
@@ -48,9 +50,10 @@ export default{
 
 <template>
     <div class="card">
+        <img :src="store.APIimgCard + series.poster_path" alt="img">
         <strong>{{ series.name }}</strong>
         <span> ({{ series.original_name }})</span>
-        <span :class=" `fi fi-${languageToFlagSeries(series.original_language)} fis`"></span>
+        <span :class=" `fi fi-${languageToFlagSeries(series.original_language)}`"></span>
         <div>
             <i v-for=" indice in store.starList"  :class="indice < voteToStars(series.vote_average)? 'fa-solid fa-star':'fa-regular fa-star' "></i>
         </div>

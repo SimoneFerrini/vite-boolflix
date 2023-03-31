@@ -10,6 +10,8 @@ export const store = reactive({
     APIseriesSearch: 'search/tv',
     APIkey:'?api_key=9c8e071c9d2477e79c9ef99320d11610',
     APIquery:'&query=',
+
+    APIimgCard: 'https://image.tmdb.org/t/p/w200',
     
     searchTitle: '',
 })
