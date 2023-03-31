@@ -1,9 +1,11 @@
 <script>
 import "/node_modules/flag-icons/css/flag-icons.min.css";
+import '@fortawesome/fontawesome-free/css/all.css';
+import {store} from "../store";
 export default{
     data(){
         return{
-
+            store,
         }
     },
 
@@ -24,14 +26,22 @@ export default{
                 xx = 'cn'
             } else if( xx == 'ko'){
                 xx = 'kr'
+            } else if( xx == 'xx'){
+                xx = '--'
             }
 
             return xx;
 
             
 
-        }
-    }
+        },
+        voteToStars(num){
+             num = Math.ceil(num / 2);
+             return num;
+        },
+    },
+
+    
     
 }
 </script>
@@ -41,7 +51,9 @@ export default{
         <strong>{{ series.name }}</strong>
         <span> ({{ series.original_name }})</span>
         <span :class=" `fi fi-${languageToFlagSeries(series.original_language)} fis`"></span>
-        <span>{{ series.vote_average }}</span>
+        <div>
+            <i v-for=" indice in store.starList"  :class="indice < voteToStars(series.vote_average)? 'fa-solid fa-star':'fa-regular fa-star' "></i>
+        </div>
         
     </div>
 </template>
@@ -51,5 +63,15 @@ export default{
         display: flex;
         flex-direction: column;
         gap: 3px;
+
+        width: calc(100% / 4 - 3em / 4 * 3);
+        background-color: black;
+        border: 1px solid white;
+
+        padding: 1em;
+
+        .fa-star{
+            color: orange;
+        }
     }
 </style>

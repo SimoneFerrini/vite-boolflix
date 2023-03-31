@@ -18,14 +18,15 @@ export default{
 </script>
 
 <template>
-    <div v-if="this.store.moviesList.length > 0">
+    <!--film con ricerca------------------------------------------------------------------->
+    <div  class="my-container" v-if="this.store.moviesList.length > 0">
         <h2>Movies:</h2>
         <div class="cards-container" >
             <SingleCardMovie v-for="movie in store.moviesList" :movie="movie"></SingleCardMovie>
         </div>
     </div>
-
-    <div v-if="this.store.seriesList.length > 0">
+    <!--serie con ricerca--------------------------------------------------------------------->
+    <div class="my-container" v-if="this.store.seriesList.length > 0">
         <h2>Series:</h2>
         <div class="cards-container">
             <SingleCardSeries v-for="series in store.seriesList" :series="series"></SingleCardSeries>
@@ -38,6 +39,7 @@ export default{
     .cards-container{
         display: flex;
         flex-flow: row wrap;
+        justify-content: space-between;
 
         gap: 1em;
 

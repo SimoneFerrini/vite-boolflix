@@ -1,10 +1,11 @@
-// API key: 9c8e071c9d2477e79c9ef99320d11610
+<!-- API key: 9c8e071c9d2477e79c9ef99320d11610-->
 
 <script>
 import {store} from "./store";
 import axios from "axios";
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
+
 
 export default{
   data(){
@@ -25,7 +26,7 @@ export default{
       axios.get(newAPImovie).then((res)=>{
         
         this.store.moviesList = res.data.results ;
-        
+        console.log(this.store.moviesList[7]);
       })
       let newAPIseries = this.store.APIbase + this.store.APIseriesSearch + this.store.APIkey + this.store.APIquery + this.store.searchTitle;
       axios.get(newAPIseries).then((res)=>{
