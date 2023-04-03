@@ -18,6 +18,9 @@ export default{
 </script>
 
 <template>
+    <div class="my-container showcase" v-if="this.store.searchTitle == '' ">
+        <SingleCardMovie v-for="movie in store.showcaseList" :movie="movie"></SingleCardMovie>
+    </div>
     <!--film con ricerca------------------------------------------------------------------->
     <div  class="my-container" v-if="this.store.moviesList.length > 0">
         <h2>Movies:</h2>
@@ -44,6 +47,18 @@ export default{
         gap: 1em;
         
         overflow-x:auto;
+
+        max-width: 95%;
+        margin: 0 auto;
+        padding: 2em 0;
+    }
+
+    .showcase{
+        display: flex;
+        flex-direction: row;
+        gap: 2.5em;
+
+        overflow:hidden;
 
         max-width: 95%;
         margin: 0 auto;

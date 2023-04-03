@@ -101,7 +101,13 @@ export default{
         width: 300px;
         background-color: black;
         border: 1px solid white;
+        overflow: hidden;
+        transition: 1s;
         
+        &:hover img{
+            transform: scale(120%);
+            transition: 1s;
+        }
         
         .fa-star{
             color: orange;

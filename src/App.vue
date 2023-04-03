@@ -20,13 +20,26 @@ export default{
     AppMain,
   },
 
+  created(){    
+    this.initialShowcase();
+  },
+
   methods:{
+
+    initialShowcase(){
+      let newAPIshowcase = this.store.APIbase + this.store.APIinitialShowcase + this.store.APIkey;
+      axios.get(newAPIshowcase).then((res)=>{
+        this.store.showcaseList = res.data.results;
+        console.log(this.store.showcaseList)
+      })
+    },
+
     searchMovie(){
       let newAPImovie = this.store.APIbase + this.store.APImovieSearch + this.store.APIkey + this.store.APIquery + this.store.searchTitle;
       axios.get(newAPImovie).then((res)=>{
         
         this.store.moviesList = res.data.results ;
-        console.log(this.store.moviesList[7]);
+        
       })
       let newAPIseries = this.store.APIbase + this.store.APIseriesSearch + this.store.APIkey + this.store.APIquery + this.store.searchTitle;
       axios.get(newAPIseries).then((res)=>{
@@ -38,11 +51,7 @@ export default{
 
   }
  
-  // created(){
-  //   axios.get(this.store.APIqueryTitle).then((res) => {
-  //     console.log(res);
-  //   });
-  // },
+ 
 
 
 
