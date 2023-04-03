@@ -18,22 +18,30 @@ export default{
 </script>
 
 <template>
-    <div class="my-container showcase" v-if="this.store.searchTitle == '' ">
+    <div class="my-container showcase" v-if="store.searchTitle == '' ">
         <SingleCardMovie v-for="movie in store.showcaseList" :movie="movie"></SingleCardMovie>
     </div>
     <!--film con ricerca------------------------------------------------------------------->
-    <div  class="my-container" v-if="this.store.moviesList.length > 0">
+    <div  class="my-container" v-if="store.moviesList.length > 0">
         <h2>Movies:</h2>
         <div class="cards-container" >
             <SingleCardMovie v-for="movie in store.moviesList" :movie="movie"></SingleCardMovie>
         </div>
     </div>
+    <div v-else-if="store.searchTitle != '' " class="no-res-container"> 
+        <h2>Movies:</h2>
+        No results found
+    </div>
     <!--serie con ricerca--------------------------------------------------------------------->
-    <div class="my-container" v-if="this.store.seriesList.length > 0">
+    <div class="my-container" v-if="store.seriesList.length > 0">
         <h2>Series:</h2>
         <div class="cards-container">
             <SingleCardSeries v-for="series in store.seriesList" :series="series"></SingleCardSeries>
         </div>
+    </div>
+    <div v-else-if="store.searchTitle != '' " class="no-res-container"> 
+        <h2>Series:</h2>
+        No results found
     </div>
 
 </template>
@@ -53,6 +61,11 @@ export default{
         padding: 2em 0;
     }
 
+    .no-res-container{
+        max-width: 95%;
+        margin: 0 auto;
+        padding: 2em 0;
+    }
     .showcase{
         display: flex;
         flex-direction: row;

@@ -30,7 +30,7 @@ export default{
       let newAPIshowcase = this.store.APIbase + this.store.APIinitialShowcase + this.store.APIkey;
       axios.get(newAPIshowcase).then((res)=>{
         this.store.showcaseList = res.data.results;
-        console.log(this.store.showcaseList)
+        
       })
     },
 
