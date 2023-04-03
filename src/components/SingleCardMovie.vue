@@ -6,6 +6,8 @@ export default{
     data(){
         return{
             store,
+            activeHoverStar: ''
+
         }
     },
 
@@ -18,29 +20,52 @@ export default{
     methods:{
         languageToFlagMovie(xx){
 
-            if( xx == 'en'){
-                xx = 'gb';
-            } else if( xx == 'ja'){
-                xx = 'jp'
-            } else if( xx == 'zh'){
-                xx = 'cn'
-            } else if( xx == 'ko'){
-                xx = 'kr'
-            } else if( xx == 'xx'){
-                xx = '--'
-            } else if( xx == 'hi'){
-                xx = 'in'
+            switch(xx){
+                case "en":
+                    xx = "gb";
+                    return xx;
+                case "ja":
+                    xx = "Jp";
+                    return xx;
+                case "zh":
+                    xx = "cn";
+                    return xx;
+                case "ko":
+                    xx = "kr";
+                    return xx;
+                case "xx":
+                    xx = "--";
+                    return xx;
+                case "hi":
+                    xx = "in";
+                    return xx;
             }
 
-            return xx;
-
             
-
         },
+
         voteToStars(num){
              num = Math.ceil(num / 2);
              return num;
         },
+
+        checkImages(imgPath){
+            let imgUrl;
+            if(imgPath != null || imgPath  != '' || imgPath != ' ' ){
+                imgUrl = this.store.APIimgCard + imgPath;
+            }else{
+                imgUrl = "./img/badDB.png"
+            }
+
+            return imgUrl;
+        },
+
+        starsHover(index){
+            this.activeHoverStar = index;
+
+        }
+
+        
     }
     
 }
@@ -48,7 +73,7 @@ export default{
 
 <template>
     <div class="card">
-        <img :src="store.APIimgCard + movie.poster_path" alt="img">
+        <img :src="checkImages(movie.poster_path)" alt="img">
         <strong>{{ movie.title }}</strong>
         <span> ({{ movie.original_title }})</span>
         <span :class=" `fi fi-${languageToFlagMovie(movie.original_language)} `"></span>
@@ -65,13 +90,23 @@ export default{
         flex-direction: column;
         gap: 3px;
 
-        width: calc(100% / 4 - 3em / 4 * 3);
+        flex-shrink: 0;
+
+        
+        width: 300px;
         background-color: black;
         border: 1px solid white;
-        padding: 1em;
+        
+
+        
 
         .fa-star{
             color: orange;
+            
         }
+
+        .hover{
+                color: white;
+            }
     }
 </style>

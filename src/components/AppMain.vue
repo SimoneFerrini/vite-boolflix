@@ -38,12 +38,14 @@ export default{
 <style lang="scss" scoped>
     .cards-container{
         display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
+        flex-direction: row;
+        justify-content: flex-start;
 
         gap: 1em;
+        
+        overflow-x:auto;
 
-        max-width: 90%;
+        max-width: 95%;
         margin: 0 auto;
         padding: 2em 0;
     }
