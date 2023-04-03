@@ -54,7 +54,7 @@ export default{
             if(imgPath != null || imgPath  != '' || imgPath != ' ' ){
                 imgUrl = this.store.APIimgCard + imgPath;
             }else{
-                imgUrl = "./img/badDB.png"
+                imgUrl = "../../public/img/badDB.png"
             }
 
             return imgUrl;
@@ -68,7 +68,8 @@ export default{
 
 <template>
     <div class="card">
-        <img :src="checkImages(series.poster_path)" alt="img">
+        <img  v-if="series.poster_path == null" src="../../public/img/badDB.png" alt="">
+        <img  v-else :src="checkImages(series.poster_path)" alt="img">
         <strong>{{ series.name }}</strong>
         <span> ({{ series.original_name }})</span>
         <span :class=" `fi fi-${languageToFlagSeries(series.original_language)}`"></span>

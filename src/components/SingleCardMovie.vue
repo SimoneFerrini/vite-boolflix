@@ -54,16 +54,13 @@ export default{
             if(imgPath != null || imgPath  != '' || imgPath != ' ' ){
                 imgUrl = this.store.APIimgCard + imgPath;
             }else{
-                imgUrl = "./img/badDB.png"
+                imgUrl = "../../public/img/badDB.png"
             }
 
             return imgUrl;
         },
 
-        starsHover(index){
-            this.activeHoverStar = index;
-
-        }
+        
 
         
     }
@@ -73,7 +70,8 @@ export default{
 
 <template>
     <div class="card">
-        <img :src="checkImages(movie.poster_path)" alt="img">
+        <img  v-if="movie.poster_path == null" src="../../public/img/badDB.png" alt="">
+        <img  v-else :src="checkImages(movie.poster_path)" alt="img">
         <strong>{{ movie.title }}</strong>
         <span> ({{ movie.original_title }})</span>
         <span :class=" `fi fi-${languageToFlagMovie(movie.original_language)} `"></span>
