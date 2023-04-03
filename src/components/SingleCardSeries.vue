@@ -99,10 +99,6 @@ export default{
 
         .fa-star{
             color: orange;
-
-            &:hover{
-                color: white;
-            }
         }
     }
 </style>

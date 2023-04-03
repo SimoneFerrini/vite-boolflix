@@ -72,11 +72,19 @@ export default{
     <div class="card">
         <img  v-if="movie.poster_path == null" src="../../public/img/badDB.png" alt="">
         <img  v-else :src="checkImages(movie.poster_path)" alt="img">
-        <strong>{{ movie.title }}</strong>
-        <span> ({{ movie.original_title }})</span>
-        <span :class=" `fi fi-${languageToFlagMovie(movie.original_language)} `"></span>
-        <div>
-            <i v-for=" indice in store.starList"  :class="indice < voteToStars(movie.vote_average)? 'fa-solid fa-star':'fa-regular fa-star' "></i>
+        <div class="card-title">
+            <strong>{{ movie.title }}</strong>
+        </div>
+        <div class="card-hover">
+            <strong >{{ movie.title }}</strong>
+            <span class="small-font"> ({{ movie.original_title }})</span>
+            <p class="small-font">{{ movie.overview }}</p>
+            <div class="lang-stars-container">
+                <span :class=" `fi fi-${languageToFlagMovie(movie.original_language)} `"></span>
+                <div>
+                    <i v-for=" indice in store.starList"  :class="indice < voteToStars(movie.vote_average)? 'fa-solid fa-star':'fa-regular fa-star' "></i>
+                </div>
+            </div>
         </div>
         
     </div>
@@ -90,21 +98,54 @@ export default{
 
         flex-shrink: 0;
 
+        position: relative;
         
         width: 300px;
         background-color: black;
         border: 1px solid white;
         
-
         
-
         .fa-star{
             color: orange;
             
         }
 
-        .hover{
-                color: white;
-            }
     }
+
+    .card-title{
+        padding: 1em 0 0 1em;
+    }
+    .card-hover{
+        display: none;
+        flex-direction: column;
+        gap: 0.4em;
+        padding: 1em;
+        background-color: rgba(0, 0, 0, 0.652);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        strong{
+            font-size: 1.2em;
+        }
+
+        .small-font{
+            font-size: 0.8em;
+        }
+
+
+    }
+
+    .card:hover .card-hover{
+        display: flex;
+
+        .lang-stars-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
 </style>
