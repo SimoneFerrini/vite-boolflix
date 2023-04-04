@@ -28,14 +28,14 @@ export default{
 
     initialShowcase(){
       let newAPIshowcase = this.store.APIbase + this.store.APIinitialShowcase + this.store.APIkey;
-      axios.get(newAPIshowcase).then((res)=>{
+          axios.get(newAPIshowcase).then((res)=>{
         this.store.showcaseList = res.data.results;
       });
 
-      for(let i=0; i < 3 ; i++){
-        this.store.showcaseOnlyThree[i] = this.store.showcaseList[i];
-      }
-
+      let newAPIshowcaseSeries = this.store.APIbase + this.store.APIinitialShowcaseSeries + this.store.APIkey;
+          axios.get(newAPIshowcaseSeries).then((res)=>{
+        this.store.showcaseListSeries = res.data.results;
+      });
 
     },
 

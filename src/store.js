@@ -4,6 +4,7 @@ export const store = reactive({
     moviesList: [],
     seriesList:[],
     showcaseList:[],
+    showcaseListSeries:[],
     showcaseOnlyThree:[],
     indexShowcase:0,
     
@@ -12,6 +13,7 @@ export const store = reactive({
     APImovieSearch: 'search/movie',
     APIseriesSearch: 'search/tv',
     APIinitialShowcase: 'trending/movie/week',
+    APIinitialShowcaseSeries: 'trending/tv/week',
     APIkey:'?api_key=9c8e071c9d2477e79c9ef99320d11610',
     APIquery:'&query=',
 

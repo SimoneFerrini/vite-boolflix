@@ -21,7 +21,13 @@ export default{
     <div class="my-container" v-if="store.searchTitle == '' ">
         <h2>Trending Movies:</h2>
         <div class="showcase">
-            <SingleCardMovie v-for="movie in store.showcaseOnlyThree" :movie="movie"></SingleCardMovie>
+            <SingleCardMovie v-for="movie in store.showcaseList" :movie="movie"></SingleCardMovie>
+        </div>
+    </div>
+    <div class="my-container" v-if="store.searchTitle == '' ">
+        <h2>Trending Series:</h2>
+        <div class="showcase">
+            <SingleCardSeries v-for="series in store.showcaseListSeries" :series="series"></SingleCardSeries>
         </div>
     </div>
     <!--film con ricerca------------------------------------------------------------------->
@@ -78,7 +84,7 @@ export default{
         flex-direction: row;
         gap: 2em;
 
-        overflow:hidden;
+        overflow-x:auto;
 
         max-width: 95%;
         margin: 0 auto;
