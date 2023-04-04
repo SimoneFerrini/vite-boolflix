@@ -6,7 +6,7 @@ export default{
     data(){
         return{
             store,
-            activeHoverStar: ''
+            activeHoverStar: '',
 
         }
     },
@@ -66,7 +66,7 @@ export default{
 
         starsHoverReset(){
             this.activeHoverStar = '';
-        }
+        },
 
         
 
@@ -90,8 +90,8 @@ export default{
             <div class="lang-stars-container">
                 <span :class=" `fi fi-${languageToFlagMovie(movie.original_language)} `"></span>
                 <div @mouseleave="starsHoverReset()">
-                    <i v-for="indice in 5" :class="indice < voteToStars(movie.vote_average)? 'fa-solid fa-star':'fa-regular fa-star' "
-                     @mouseover="starsHover(indice)" v-if="indice <= activeHoverStar ? 'hover-active' : '' "></i>
+                    <i v-for="indice in 5" @mouseover="starsHover(indice)"
+                    :class="indice<=activeHoverStar ? 'fa-solid fa-star hover-active' : (indice < voteToStars(movie.vote_average)? 'fa-solid fa-star':'fa-regular fa-star') "></i>
                 </div>
             </div>
         </div>
@@ -123,7 +123,7 @@ export default{
         .fa-star{
             color: orange;
 
-            .hover-active{
+            &.hover-active{
                 color: white;
             }
             

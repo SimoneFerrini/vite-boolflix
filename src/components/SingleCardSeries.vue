@@ -6,6 +6,7 @@ export default{
     data(){
         return{
             store,
+            activeHoverStar: '',
         }
     },
 
@@ -59,6 +60,14 @@ export default{
 
             return imgUrl;
         },
+
+        starsHover(index){
+            this.activeHoverStar = index;
+        },
+
+        starsHoverReset(){
+            this.activeHoverStar = '';
+        },
     },
 
     
@@ -79,8 +88,9 @@ export default{
             <p class="small-font">{{ series.overview }}</p>
             <div class="lang-stars-container">
                 <span :class=" `fi fi-${languageToFlagSeries(series.original_language)}`"></span>
-                <div>
-                    <i v-for=" indice in store.starList"  :class="indice < voteToStars(series.vote_average)? 'fa-solid fa-star':'fa-regular fa-star' "></i>
+                <div @mouseleave="starsHoverReset()">
+                    <i v-for="indice in 5" @mouseover="starsHover(indice)"
+                    :class="indice<=activeHoverStar ? 'fa-solid fa-star hover-active' : (indice < voteToStars(series.vote_average)? 'fa-solid fa-star':'fa-regular fa-star') "></i>
                 </div>
             </div>
         </div>
@@ -111,6 +121,10 @@ export default{
         
         .fa-star{
             color: orange;
+
+            &.hover-active{
+                color: white;
+            }
             
         }
 

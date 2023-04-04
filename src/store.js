@@ -16,4 +16,7 @@ export const store = reactive({
     APIimgCard: 'https://image.tmdb.org/t/p/w342',
     
     searchTitle: '',
+
+    anteprimaAttiva: {},
+    anteprimaShow: false,
 })
