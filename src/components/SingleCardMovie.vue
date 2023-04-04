@@ -86,7 +86,8 @@ export default{
             <div class="lang-stars-container">
                 <span :class=" `fi fi-${languageToFlagMovie(movie.original_language)} `"></span>
                 <div>
-                    <i v-for=" indice in store.starList"  :class="indice < voteToStars(movie.vote_average)? 'fa-solid fa-star':'fa-regular fa-star' "></i>
+                    <i v-for="indice in 5" :class="indice < voteToStars(movie.vote_average)? 'fa-solid fa-star':'fa-regular fa-star' "
+                     @mouseover="starsHover(indice)" v-if="indice <= activeHoverStar ? 'hover-active' : '' "></i>
                 </div>
             </div>
         </div>
@@ -117,6 +118,10 @@ export default{
         }
         .fa-star{
             color: orange;
+
+            .hover-active{
+                color: white;
+            }
             
         }
 
