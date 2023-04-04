@@ -62,6 +62,10 @@ export default{
 
         starsHover(index){
             this.activeHoverStar = index;
+        },
+
+        starsHoverReset(){
+            this.activeHoverStar = '';
         }
 
         
@@ -85,7 +89,7 @@ export default{
             <p class="small-font">{{ movie.overview }}</p>
             <div class="lang-stars-container">
                 <span :class=" `fi fi-${languageToFlagMovie(movie.original_language)} `"></span>
-                <div>
+                <div @mouseleave="starsHoverReset()">
                     <i v-for="indice in 5" :class="indice < voteToStars(movie.vote_average)? 'fa-solid fa-star':'fa-regular fa-star' "
                      @mouseover="starsHover(indice)" v-if="indice <= activeHoverStar ? 'hover-active' : '' "></i>
                 </div>
