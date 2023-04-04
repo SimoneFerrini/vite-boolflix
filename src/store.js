@@ -4,6 +4,8 @@ export const store = reactive({
     moviesList: [],
     seriesList:[],
     showcaseList:[],
+    showcaseOnlyThree:[],
+    indexShowcase:0,
     
 
     APIbase: 'https://api.themoviedb.org/3/',

@@ -25,7 +25,7 @@ export default{
       </div>
       <div class="input-and-btn">
         <div class="search-bar">
-        <input v-model="store.searchTitle" @keyup.enter="$emit('search')" placeholder="Search..." type="text">
+        <input v-model="store.searchTitle" @keyup="$emit('search')" placeholder="Search..." type="text">
         <button @click="$emit('search')">Search</button>
         </div>
       </div>

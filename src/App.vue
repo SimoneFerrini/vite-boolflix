@@ -30,8 +30,13 @@ export default{
       let newAPIshowcase = this.store.APIbase + this.store.APIinitialShowcase + this.store.APIkey;
       axios.get(newAPIshowcase).then((res)=>{
         this.store.showcaseList = res.data.results;
-        
-      })
+      });
+
+      for(let i=0; i < 3 ; i++){
+        this.store.showcaseOnlyThree[i] = this.store.showcaseList[i];
+      }
+
+
     },
 
     searchMovie(){

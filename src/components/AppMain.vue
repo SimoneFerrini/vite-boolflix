@@ -18,8 +18,11 @@ export default{
 </script>
 
 <template>
-    <div class="my-container showcase" v-if="store.searchTitle == '' ">
-        <SingleCardMovie v-for="movie in store.showcaseList" :movie="movie"></SingleCardMovie>
+    <div class="my-container" v-if="store.searchTitle == '' ">
+        <h2>Trending Movies:</h2>
+        <div class="showcase">
+            <SingleCardMovie v-for="movie in store.showcaseOnlyThree" :movie="movie"></SingleCardMovie>
+        </div>
     </div>
     <!--film con ricerca------------------------------------------------------------------->
     <div  class="my-container" v-if="store.moviesList.length > 0">
@@ -47,6 +50,10 @@ export default{
 </template>
 
 <style lang="scss" scoped>
+
+    .my-container h2{
+        padding-top: 1em;
+    }
     .cards-container{
         display: flex;
         flex-direction: row;
@@ -64,12 +71,12 @@ export default{
     .no-res-container{
         max-width: 95%;
         margin: 0 auto;
-        padding: 2em 0;
+        padding: 1em 0;
     }
     .showcase{
         display: flex;
         flex-direction: row;
-        gap: 2.5em;
+        gap: 2em;
 
         overflow:hidden;
 
