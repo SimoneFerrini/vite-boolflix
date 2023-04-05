@@ -22,6 +22,7 @@ export default{
 
   created(){    
     this.initialShowcase();
+    this.genresArrayCreation();
   },
 
   methods:{
@@ -39,6 +40,21 @@ export default{
 
     },
 
+    genresArrayCreation(){
+      let newAPIgenereM = this.store.APIbase + this.store.APIgenereMovies + this.store.APIkey;
+      axios.get(newAPIgenereM).then((res)=>{
+        this.store.movieGenresList = res.data.genres;
+        console.log(this.store.movieGenresList);
+      });
+
+      let newAPIgenereS = this.store.APIbase + this.store.APIgenereSeries + this.store.APIkey;
+      axios.get(newAPIgenereS).then((res)=>{
+        this.store.seriesGenresList = res.data.genres;
+        console.log(this.store.seriesGenresList);
+      });
+
+    },
+
     searchMovie(){
       let newAPImovie = this.store.APIbase + this.store.APImovieSearch + this.store.APIkey + this.store.APIquery + this.store.searchTitle;
       axios.get(newAPImovie).then((res)=>{
@@ -52,7 +68,8 @@ export default{
         this.store.seriesList = res.data.results;
       })
     
-    }
+    },
+
 
   }
  

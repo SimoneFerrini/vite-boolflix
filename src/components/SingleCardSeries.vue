@@ -1,6 +1,5 @@
 <script>
-import "/node_modules/flag-icons/css/flag-icons.min.css";
-import '@fortawesome/fontawesome-free/css/all.css';
+
 import {store} from "../store";
 export default{
     data(){
@@ -68,6 +67,13 @@ export default{
         starsHoverReset(){
             this.activeHoverStar = '';
         },
+
+        setAnteprimaShow(item){
+            this.store.anteprimaType = 's';
+            this.store.anteprimaAttiva = item;
+            this.store.anteprimaShow = true;
+            
+        }
     },
 
     
@@ -76,7 +82,7 @@ export default{
 </script>
 
 <template>
-    <div class="card">
+    <div class="card" @click="setAnteprimaShow(series)">
         <img  v-if="series.poster_path == null" src="../../public/img/badDB.png" alt="">
         <img  v-else :src="checkImages(series.poster_path)" alt="img">
         <div class="card-title">

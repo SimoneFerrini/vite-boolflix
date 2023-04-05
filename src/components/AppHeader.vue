@@ -20,9 +20,9 @@ export default{
     <div class="my-container">
 
       
-      <div class="logo">
+      <a href="../index.html" class="logo">
         <span class="b-logo">B</span><span>oolflix</span>
-      </div>
+      </a>
       <div class="input-and-btn">
         <div class="search-bar">
         <input v-model="store.searchTitle" @keyup="$emit('search')" placeholder="Search..." type="text">
@@ -56,6 +56,7 @@ export default{
     }
   }
   .logo{
+    text-decoration: none;
     color: white;
     font-size: 2.5em;
     font-weight: bold;

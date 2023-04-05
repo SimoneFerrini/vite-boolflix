@@ -5,10 +5,12 @@ export const store = reactive({
     seriesList:[],
     showcaseList:[],
     showcaseListSeries:[],
-    showcaseOnlyThree:[],
-    indexShowcase:0,
     
-
+    movieGenresList:[],
+    seriesGenresList: [],
+    
+    APIgenereMovies: 'genre/movie/list',
+    APIgenereSeries: 'genre/tv/list',
     APIbase: 'https://api.themoviedb.org/3/',
     APImovieSearch: 'search/movie',
     APIseriesSearch: 'search/tv',
@@ -18,9 +20,11 @@ export const store = reactive({
     APIquery:'&query=',
 
     APIimgCard: 'https://image.tmdb.org/t/p/w342',
-    
+    APIimgAnteprima: 'https://image.tmdb.org/t/p/w780',
+
     searchTitle: '',
 
     anteprimaAttiva: {},
     anteprimaShow: false,
+    anteprimaType: '',
 })
