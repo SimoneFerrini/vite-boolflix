@@ -74,10 +74,15 @@ export default{
         },
 
         checkGenere(genere){
-            if(this.store.anteprimaAttiva.genre_ids.includes(genere.id)){
-             return genere.name;
-            }
-            return '';
+            this.store.movieGenresList.forEach((elem) =>{
+                if(this.store.movieGenresList.includes(genere)){
+                    console.log(elem.name)
+ 
+                    return elem.name
+                                
+                }
+            })
+            
              
 
         
@@ -115,7 +120,7 @@ export default{
                 <!-- add genere e cast-->
                 <div class="genere-container">
                     <strong>Genres: </strong>
-                    <span v-for="genere in store.movieGenresList"> {{ checkGenere(genere)}}</span> 
+                    <span v-for="genere in store.anteprimaAttiva.genre_ids"> {{checkGenere(genere)}}</span> 
                     
                 </div>
             </div>
