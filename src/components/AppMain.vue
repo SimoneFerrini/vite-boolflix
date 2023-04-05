@@ -75,12 +75,13 @@ export default{
 
         checkGenere(genere){
             this.store.movieGenresList.forEach((elem) =>{
-                if(this.store.movieGenresList.includes(genere)){
-                    console.log(elem.name)
- 
-                    return elem.name
-                                
+                if(genere == elem.id){
+                console.log(genere)
+                console.log(elem.id)
+                console.log(elem.name)  
+                this.store.genereName = elem.name;                       
                 }
+                
             })
             
              

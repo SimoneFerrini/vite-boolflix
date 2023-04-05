@@ -8,6 +8,7 @@ export const store = reactive({
     
     movieGenresList:[],
     seriesGenresList: [],
+    genereName:'',
     
     APIgenereMovies: 'genre/movie/list',
     APIgenereSeries: 'genre/tv/list',
