@@ -16,6 +16,7 @@ export default{
         SingleCardSeries,
     },
 
+
     methods:{
         languageToFlagMovie(xx){
 
@@ -71,8 +72,19 @@ export default{
             this.store.anteprimaType= '';
             this.store.anteprimaShow = false;
         },
+
+        checkGenere(genere){
+            if(this.store.anteprimaAttiva.genre_ids.includes(genere.id)){
+             return genere.name;
+            }
+            return '';
+             
+
+        
+        }
     }
 }
+
 </script>
 
 <template>
@@ -101,8 +113,11 @@ export default{
                     </div>
                 </div>
                 <!-- add genere e cast-->
-                <strong>Genres: </strong>
-                <span v-for="genere in store.movieGenresList" v-if="genere.includes(store.anteprimaAttiva.genres_id) && store.anteprimaType == 'm' "> {{ genere.name }}</span>
+                <div class="genere-container">
+                    <strong>Genres: </strong>
+                    <span v-for="genere in store.movieGenresList"> {{ checkGenere(genere)}}</span> 
+                    
+                </div>
             </div>
         </div>
 
@@ -217,6 +232,13 @@ export default{
             &.hover-active{
                 color: white;
             }
+        }
+
+        .genere-container{
+            display: flex;
+            flex-direction: row;
+            
+            gap: 1em;
         }
         .lang-stars-container{
             display: flex;
