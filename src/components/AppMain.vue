@@ -73,23 +73,22 @@ export default{
             this.store.anteprimaShow = false;
         },
 
-        checkGenere(genere){
-            this.store.movieGenresList.forEach((elem) =>{
-                if(genere == elem.id){
-                console.log(genere)
-                console.log(elem.id)
-                console.log(elem.name)  
-                this.store.genereName = elem.name;                       
-                }
+        checkGenere(genere_id, type){
+            console.log(type)
+            if(type == 'm'){
+                return this.store.movieGenresList.find((elem) => genere_id == elem.id).name
+            }else if(type == 's'){
+                return this.store.seriesGenresList.find((elem)=> genere_id == elem.id).name
+            }
                 
-            })
+        },
             
              
 
         
-        }
     }
 }
+
 
 </script>
 
@@ -102,10 +101,10 @@ export default{
         </div>
         <div class="anteprima-data-bg">
             <div class="anteprima-data">
-                <span  v-if="store.anteprimaType = 'm' && store.anteprimaType !='s' "><strong>Title: </strong>{{ store.anteprimaAttiva.title }}</span>
-                <span  v-else-if="store.anteprimaType = 's' "><strong>Name: </strong>{{ store.anteprimaAttiva.name }}</span>
-                <span v-if="store.anteprimaType = 'm'&& store.anteprimaType !='s' "> <strong> Original Title: </strong>({{ store.anteprimaAttiva.original_title }})</span>
-                <span v-else-if="store.anteprimaType = 's' "> <strong> Original Name: </strong>({{ store.anteprimaAttiva.original_name }})</span>
+                <span  v-if="store.anteprimaType == 'm' && store.anteprimaType !='s' "><strong>Title: </strong>{{ store.anteprimaAttiva.title }}</span>
+                <span  v-else-if="store.anteprimaType == 's' "><strong>Name: </strong>{{ store.anteprimaAttiva.name }}</span>
+                <span v-if="store.anteprimaType == 'm'&& store.anteprimaType !='s' "> <strong> Original Title: </strong>({{ store.anteprimaAttiva.original_title }})</span>
+                <span v-else-if="store.anteprimaType == 's' "> <strong> Original Name: </strong>({{ store.anteprimaAttiva.original_name }})</span>
                 <p><strong> Overview: </strong>{{ store.anteprimaAttiva.overview }}</p>
                 <div class="lang-stars-container small-font">
                     <span>Language:</span>
@@ -121,9 +120,10 @@ export default{
                 <!-- add genere e cast-->
                 <div class="genere-container">
                     <strong>Genres: </strong>
-                    <span v-for="genere in store.anteprimaAttiva.genre_ids"> {{checkGenere(genere)}}</span> 
+                    <span v-for="genere_id in store.anteprimaAttiva.genre_ids"> {{checkGenere(genere_id, store.anteprimaType)}}</span> 
                     
                 </div>
+                
             </div>
         </div>
 
